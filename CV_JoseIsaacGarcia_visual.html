@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>José Isaac García Rivera — CV Analista de Negocio TI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/lucide@1/dist/umd/lucide.min.js"></script>
+<style>
+:root{
+  --bg:#202024;
+  --card:#2a2a2f;
+  --text:#e8e5df;
+  --muted:#9a978f;
+  --accent:#c47046;
+  --accent-soft:rgba(196,112,70,.14);
+  --accent2:#7ba8b8;
+  --accent2-soft:rgba(123,168,184,.14);
+  --border:rgba(232,229,223,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Chakra Petch',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+  overflow-x:hidden;
+}
+/* faint tech grid background */
+body::before{
+  content:"";
+  position:fixed;inset:0;
+  background-image:
+    linear-gradient(var(--border) 1px,transparent 1px),
+    linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:48px 48px;
+  mask-image:radial-gradient(ellipse at 50% 0%,black 30%,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse at 50% 0%,black 30%,transparent 75%);
+  pointer-events:none;
+  z-index:0;
+}
+.page{max-width:1180px;margin:0 auto;padding:0 28px 80px;position:relative;z-index:1}
+
+/* ---------- PRINT BUTTON ---------- */
+.print-btn{
+  position:fixed;top:18px;right:18px;z-index:50;
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--accent-soft);color:var(--text);
+  border:1px solid var(--accent);border-radius:8px;
+  padding:10px 16px;font-family:inherit;font-size:13px;font-weight:600;
+  cursor:pointer;letter-spacing:.5px;text-transform:uppercase;
+  transition:transform .2s,box-shadow .2s;
+}
+.print-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(196,112,70,.35)}
+.print-btn svg{width:16px;height:16px}
+
+/* ---------- HEADER / HERO ---------- */
+.hero{
+  position:relative;
+  padding:64px 0 40px;
+  border-bottom:1px solid var(--border);
+}
+.hero-grid{display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:12px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--accent2);font-weight:600;margin-bottom:14px;
+}
+.eyebrow .dot{width:8px;height:8px;border-radius:50%;background:var(--accent2);box-shadow:0 0 12px var(--accent2);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+h1.name{
+  font-size:clamp(38px,6vw,64px);
+  font-weight:700;line-height:1.05;letter-spacing:-.5px;
+  background:linear-gradient(120deg,#e8e5df 30%,var(--accent) 70%,var(--accent2) 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-bottom:10px;
+}
+.title-line{
+  font-size:clamp(16px,2.2vw,22px);font-weight:500;color:var(--text);
+  letter-spacing:.5px;margin-bottom:6px;
+}
+.title-line strong{color:var(--accent);font-weight:600}
+.sub-line{color:var(--muted);font-size:14px;margin-bottom:26px;letter-spacing:.3px}
+.contact-row{display:flex;flex-wrap:wrap;gap:10px 22px;font-size:13.5px;color:var(--muted)}
+.contact-item{display:inline-flex;align-items:center;gap:8px}
+.contact-item svg{width:15px;height:15px;color:var(--accent);flex-shrink:0}
+.contact-item a{color:var(--muted);text-decoration:none;transition:color .2s}
+.contact-item a:hover{color:var(--accent2)}
+.mode-pill{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--accent2-soft);border:1px solid var(--accent2);
+  color:var(--text);padding:4px 12px;border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.5px;
+}
+
+/* avatar / monogram block */
+.monogram{
+  width:140px;height:140px;border-radius:50%;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:52px;font-weight:700;color:#202024;letter-spacing:2px;
+  box-shadow:0 0 0 6px var(--card),0 0 40px rgba(196,112,70,.35);
+  flex-shrink:0;position:relative;
+}
+.monogram::after{
+  content:"";position:absolute;inset:-14px;border-radius:50%;
+  border:1px dashed var(--accent2);opacity:.5;
+  animation:spin 18s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* ---------- STATS STRIP ---------- */
+.stats{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+  margin:36px 0;
+}
+.stat{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:20px 18px;position:relative;overflow:hidden;
+  transition:transform .25s,border-color .25s;
+}
+.stat:hover{transform:translateY(-4px);border-color:var(--accent)}
+.stat::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+}
+.stat .num{
+  font-size:34px;font-weight:700;line-height:1;
+  background:linear-gradient(120deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-bottom:6px;font-variant-numeric:tabular-nums;
+}
+.stat .lbl{font-size:12.5px;color:var(--muted);letter-spacing:.3px;line-height:1.4}
+
+/* ---------- SECTION HEADINGS ---------- */
+.section{margin-top:44px}
+.sec-head{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.sec-head .ico{
+  width:40px;height:40px;border-radius:10px;flex-shrink:0;
+  background:var(--accent-soft);border:1px solid var(--accent);
+  display:flex;align-items:center;justify-content:center;color:var(--accent);
+}
+.sec-head .ico svg{width:20px;height:20px}
+.sec-head h2{
+  font-size:22px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+}
+.sec-head .rule{flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+
+/* ---------- THREE PILLARS (emphasis) ---------- */
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pillar{
+  background:var(--card);border:1px solid var(--border);border-radius:14px;
+  padding:26px 22px;position:relative;overflow:hidden;
+  transition:transform .3s,border-color .3s,box-shadow .3s;
+}
+.pillar:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 12px 32px rgba(0,0,0,.4)}
+.pillar .p-num{
+  font-size:56px;font-weight:700;line-height:1;
+  color:transparent;-webkit-text-stroke:1.5px var(--accent2);
+  position:absolute;top:14px;right:18px;opacity:.5;
+}
+.pillar .p-ico{
+  width:46px;height:46px;border-radius:10px;margin-bottom:16px;
+  display:flex;align-items:center;justify-content:center;
+}
+.pillar:nth-child(1) .p-ico{background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent)}
+.pillar:nth-child(2) .p-ico{background:var(--accent2-soft);color:var(--accent2);border:1px solid var(--accent2)}
+.pillar:nth-child(3) .p-ico{background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent)}
+.pillar .p-ico svg{width:24px;height:24px}
+.pillar h3{font-size:18px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:10px}
+.pillar:nth-child(1) h3{color:var(--accent)}
+.pillar:nth-child(2) h3{color:var(--accent2)}
+.pillar:nth-child(3) h3{color:var(--accent)}
+.pillar p{font-size:13px;color:var(--muted);margin-bottom:14px;line-height:1.55}
+.pillar .tags{display:flex;flex-wrap:wrap;gap:6px}
+.pillar .tag{
+  font-size:11px;padding:3px 9px;border-radius:5px;
+  background:rgba(232,229,223,.06);border:1px solid var(--border);
+  color:var(--text);letter-spacing:.3px;
+}
+
+/* ---------- PROFILE ---------- */
+.profile-box{
+  background:var(--card);border:1px solid var(--border);border-left:3px solid var(--accent);
+  border-radius:12px;padding:24px 26px;font-size:14.5px;line-height:1.75;color:#cfccc6;
+}
+.profile-box strong{color:var(--accent2);font-weight:600}
+
+/* ---------- MAIN GRID: experience + sidebar ---------- */
+.main-grid{display:grid;grid-template-columns:1fr 340px;gap:36px;margin-top:44px;align-items:start}
+
+/* ---------- TIMELINE / EXPERIENCE ---------- */
+.timeline{position:relative;padding-left:28px}
+.timeline::before{
+  content:"";position:absolute;left:7px;top:8px;bottom:8px;width:2px;
+  background:linear-gradient(180deg,var(--accent),var(--accent2),var(--border));
+}
+.exp{position:relative;margin-bottom:26px}
+.exp::before{
+  content:"";position:absolute;left:-28px;top:22px;width:16px;height:16px;border-radius:50%;
+  background:var(--bg);border:3px solid var(--accent);box-shadow:0 0 0 3px var(--bg),0 0 12px var(--accent);
+}
+.exp-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:22px 24px;transition:border-color .25s,transform .25s;
+}
+.exp-card:hover{border-color:var(--accent2);transform:translateX(4px)}
+.exp-head{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:baseline;margin-bottom:4px}
+.exp-role{font-size:17px;font-weight:700;color:var(--text);letter-spacing:.3px}
+.exp-date{
+  font-size:12px;font-weight:600;color:var(--accent);
+  background:var(--accent-soft);border:1px solid var(--accent);
+  padding:3px 10px;border-radius:6px;white-space:nowrap;font-variant-numeric:tabular-nums;
+}
+.exp-co{display:flex;align-items:center;gap:7px;font-size:13.5px;color:var(--accent2);font-weight:500;margin-bottom:12px}
+.exp-co svg{width:14px;height:14px;flex-shrink:0}
+.exp ul{list-style:none;margin-bottom:12px}
+.exp li{
+  font-size:13.5px;color:#cfccc6;line-height:1.6;margin-bottom:7px;
+  padding-left:18px;position:relative;
+}
+.exp li::before{
+  content:"";position:absolute;left:0;top:9px;width:6px;height:6px;
+  background:var(--accent2);transform:rotate(45deg);
+}
+.achievement{
+  display:flex;gap:10px;align-items:flex-start;
+  background:var(--accent-soft);border:1px solid var(--accent);
+  border-radius:8px;padding:10px 14px;font-size:13px;color:var(--text);line-height:1.55;
+}
+.achievement svg{width:16px;height:16px;color:var(--accent);flex-shrink:0;margin-top:2px}
+.achievement b{color:var(--accent);font-weight:700;letter-spacing:.5px}
+.sub-exp{margin-top:14px;padding-top:14px;border-top:1px dashed var(--border)}
+.sub-exp .sub-title{font-size:14px;font-weight:600;color:var(--accent2);margin-bottom:8px;display:flex;align-items:center;gap:7px}
+.sub-exp .sub-title svg{width:14px;height:14px}
+
+/* ---------- SIDEBAR ---------- */
+.side-card{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:22px;margin-bottom:20px;
+}
+.side-card h3{
+  font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:var(--accent);margin-bottom:16px;display:flex;align-items:center;gap:8px;
+}
+.side-card h3 svg{width:16px;height:16px}
+.skill-group{margin-bottom:16px}
+.skill-group:last-child{margin-bottom:0}
+.skill-group .sg-name{font-size:12.5px;font-weight:600;color:var(--accent2);letter-spacing:.5px;margin-bottom:8px;text-transform:uppercase}
+.skill-bar{margin-bottom:9px}
+.skill-bar .sb-top{display:flex;justify-content:space-between;font-size:12px;color:#cfccc6;margin-bottom:4px}
+.skill-bar .sb-track{height:6px;background:rgba(232,229,223,.08);border-radius:3px;overflow:hidden}
+.skill-bar .sb-fill{
+  height:100%;border-radius:3px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1);
+}
+.pill-cloud{display:flex;flex-wrap:wrap;gap:7px}
+.pill{
+  font-size:11.5px;padding:5px 11px;border-radius:16px;
+  background:var(--accent2-soft);border:1px solid rgba(123,168,184,.35);
+  color:var(--text);letter-spacing:.2px;
+}
+.edu-item{margin-bottom:14px;padding-bottom:14px;border-bottom:1px dashed var(--border)}
+.edu-item:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.edu-item .e-title{font-size:13.5px;font-weight:600;color:var(--text);line-height:1.4}
+.edu-item .e-sub{font-size:12px;color:var(--muted);margin-top:3px}
+.edu-item .e-status{
+  display:inline-block;margin-top:5px;font-size:10.5px;font-weight:600;
+  padding:2px 8px;border-radius:4px;letter-spacing:.5px;text-transform:uppercase;
+}
+.e-status.done{background:rgba(13,150,105,.15);color:#4ade80;border:1px solid rgba(74,222,128,.3)}
+.e-status.wip{background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent)}
+.cert-list{display:flex;flex-direction:column;gap:9px}
+.cert-item{display:flex;align-items:center;gap:10px;font-size:12.5px;color:#cfccc6}
+.cert-item svg{width:15px;height:15px;color:var(--accent);flex-shrink:0}
+.ai-tool{margin-bottom:12px}
+.ai-tool:last-child{margin-bottom:0}
+.ai-tool .ai-name{font-size:13px;font-weight:600;color:var(--accent2);display:flex;align-items:center;gap:7px;margin-bottom:3px}
+.ai-tool .ai-name svg{width:14px;height:14px;color:var(--accent)}
+.ai-tool .ai-desc{font-size:11.5px;color:var(--muted);line-height:1.5}
+
+/* ---------- FOOTER ---------- */
+.footer{
+  margin-top:56px;padding-top:24px;border-top:1px solid var(--border);
+  text-align:center;font-size:12px;color:var(--muted);letter-spacing:.5px;
+}
+.footer .code-line{font-family:'Chakra Petch',monospace;color:var(--accent2);margin-top:6px;opacity:.7}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .monogram{width:100px;height:100px;font-size:38px;justify-self:start}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .pillars{grid-template-columns:1fr}
+  .main-grid{grid-template-columns:1fr}
+  .print-btn{position:absolute}
+}
+@media (max-width:520px){
+  .stats{grid-template-columns:1fr 1fr;gap:10px}
+  .stat .num{font-size:26px}
+  .page{padding:0 16px 60px}
+}
+
+/* ---------- PRINT ---------- */
+@media print{
+  body::before{display:none}
+  .print-btn{display:none}
+  body{background:#fff;color:#1a1a1a}
+  .page{max-width:100%;padding:0}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .exp-card,.side-card,.stat,.pillar,.profile-box{break-inside:avoid}
+  .section{break-inside:avoid-page}
+}
+</style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()"><i data-lucide="printer"></i> Guardar PDF</button>
+
+<div class="page">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Analista de Negocio TI · Disponible</div>
+        <h1 class="name">José Isaac<br>García Rivera</h1>
+        <div class="title-line"><strong>Dirección</strong> de Proyectos · <strong>Análisis</strong> de Negocio · <strong>Desarrollo</strong> de Sistemas</div>
+        <div class="sub-line">Transformación digital · Agile/Scrum · BPMN · Sector público, privado, educativo y logística especializada</div>
+        <div class="contact-row">
+          <span class="contact-item"><i data-lucide="map-pin"></i> Pachuca, Hidalgo, México</span>
+          <span class="contact-item"><i data-lucide="phone"></i> 771 297 5556</span>
+          <span class="contact-item"><i data-lucide="mail"></i> <a href="mailto:joseisaacgarciarivera@gmail.com">joseisaacgarciarivera@gmail.com</a></span>
+          <span class="contact-item"><i data-lucide="linkedin"></i> <a href="https://www.linkedin.com/in/josé-isaac-garcía-rivera-948163208" target="_blank" rel="noopener">Perfil LinkedIn</a></span>
+          <span class="mode-pill"><i data-lucide="globe" style="width:13px;height:13px"></i> Presencial / Híbrido</span>
+        </div>
+      </div>
+      <div class="monogram">JIG</div>
+    </div>
+  </header>
+
+  <!-- ============ STATS ============ -->
+  <div class="stats">
+    <div class="stat"><div class="num">15+</div><div class="lbl">Años de trayectoria en TI</div></div>
+    <div class="stat"><div class="num">3</div><div class="lbl">Sistemas desarrollados desde cero</div></div>
+    <div class="stat"><div class="num">6</div><div class="lbl">Años gestionando equipos 100% remotos</div></div>
+    <div class="stat"><div class="num">4</div><div class="lbl">Sectores: público · privado · educativo · logística</div></div>
+  </div>
+
+  <!-- ============ THREE PILLARS ============ -->
+  <section class="section">
+    <div class="sec-head">
+      <div class="ico"><i data-lucide="layers"></i></div>
+      <h2>Tres pilares de valor</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="pillars">
+      <div class="pillar">
+        <div class="p-num">01</div>
+        <div class="p-ico"><i data-lucide="compass"></i></div>
+        <h3>Dirección</h3>
+        <p>Dirección integral de operaciones y proyectos. Conformación y liderazgo de equipos multidisciplinarios, planeación con indicadores, seguimiento de desviaciones y gestión de múltiples iniciativas simultáneas y partes interesadas.</p>
+        <div class="tags"><span class="tag">Scrum</span><span class="tag">MS Project</span><span class="tag">Jira</span><span class="tag">Gestión de equipos</span></div>
+      </div>
+      <div class="pillar">
+        <div class="p-num">02</div>
+        <div class="p-ico"><i data-lucide="line-chart"></i></div>
+        <h3>Análisis</h3>
+        <p>Análisis de negocio y modelado de procesos. Levantamiento de requisitos, BPMN, diagramas de flujo, modelos de datos e historias de usuario; detección de inconsistencias y traducción de necesidades en especificaciones técnicas claras.</p>
+        <div class="tags"><span class="tag">BPMN</span><span class="tag">Casos de uso</span><span class="tag">Modelado de datos</span><span class="tag">Mejora continua</span></div>
+      </div>
+      <div class="pillar">
+        <div class="p-num">03</div>
+        <div class="p-ico"><i data-lucide="code-2"></i></div>
+        <h3>Desarrollo</h3>
+        <p>Desarrollo de sistemas con base técnica sólida. HTML/CSS, JavaScript, Python, SQL y diseño adaptable; formación Full Stack en curso. Pruebas, soporte técnico, documentación y acompañamiento en implementación.</p>
+        <div class="tags"><span class="tag">JavaScript</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Full Stack (60%)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROFILE ============ -->
+  <section class="section">
+    <div class="sec-head">
+      <div class="ico"><i data-lucide="user"></i></div>
+      <h2>Perfil profesional</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="profile-box">
+      Profesional con más de <strong>15 años de trayectoria</strong> — desde desarrollo y análisis hasta liderazgo de proyectos y dirección de operaciones — con experiencia comprobada en sector público (<strong>CONACYT, SFP</strong>), privado, educativo y logística especializada. Domino el ciclo completo: <strong>análisis → planeación → conformación de equipos → seguimiento → entrega y mejora continua</strong>, con especial sensibilidad por la trazabilidad, normativa y seguridad en procesos críticos. Aplico <strong>Agile/Scrum, BPMN, Jira y MS Project</strong>, y complemento mi visión de negocio con formación técnica permanente hacia certificación <strong>Full Stack</strong>.
+    </div>
+  </section>
+
+  <!-- ============ MAIN GRID ============ -->
+  <div class="main-grid">
+
+    <!-- ===== EXPERIENCE ===== -->
+    <div>
+      <section class="section" style="margin-top:0">
+        <div class="sec-head">
+          <div class="ico"><i data-lucide="briefcase"></i></div>
+          <h2>Experiencia</h2>
+          <div class="rule"></div>
+        </div>
+
+        <div class="timeline">
+
+          <!-- 1 -->
+          <div class="exp">
+            <div class="exp-card">
+              <div class="exp-head">
+                <div class="exp-role">Director de Operaciones</div>
+                <div class="exp-date">Ene 2026 — Actual</div>
+              </div>
+              <div class="exp-co"><i data-lucide="truck"></i> Transportes Aguilar · Transporte de Material Peligroso · Pachuca, Hidalgo</div>
+              <ul>
+                <li>Dirección integral de equipo y liderazgo de áreas de patio, taller y logística especializada en material peligroso, con estricto apego a normativas de seguridad y trazabilidad.</li>
+                <li>Implementación de plataformas tecnológicas para digitalizar flujos de trabajo, seguimiento de mantenimiento, control de unidades y gestión de documentación de carga peligrosa.</li>
+                <li>Reducción de tiempos operativos mediante estandarización, automatización y mayor control sobre cada etapa del servicio.</li>
+                <li>Estructuré iniciativas de mejora en equipos ágiles (Scrum) con entregas incrementales, trazabilidad y seguridad.</li>
+              </ul>
+              <div class="achievement"><i data-lucide="award"></i><div><b>Logro:</b> Transformación digital de procesos logísticos y de taller, logrando mayor transparencia, control, cumplimiento normativo y reducción de tiempos operativos.</div></div>
+            </div>
+          </div>
+
+          <!-- 2 -->
+          <div class="exp">
+            <div class="exp-card">
+              <div class="exp-head">
+                <div class="exp-role">Líder de Proyectos de Desarrollo de Software</div>
+                <div class="exp-date">Ene 2020 — Dic 2025 · 6 años</div>
+              </div>
+              <div class="exp-co"><i data-lucide="building-2"></i> Grupo Miura · Polanco, CDMX · Modalidad 100% Remota</div>
+              <ul>
+                <li>Liderazgo del ciclo de vida completo de <b style="color:var(--accent2)">3 sistemas desde cero</b>, coordinando equipos y partes interesadas de forma remota con entregas en tiempo.</li>
+                <li>Diagnóstico y renovación de infraestructura TI, mejorando rendimiento, seguridad y disponibilidad.</li>
+              </ul>
+              <div class="sub-exp">
+                <div class="sub-title"><i data-lucide="chevron-right"></i> Sistemas entregados</div>
+                <ul>
+                  <li><b style="color:var(--text)">Sistema de pagos de nómina:</b> diseño funcional y seguimiento para automatizar cálculos, percepciones, deducciones y dispersión de pagos.</li>
+                  <li><b style="color:var(--text)">Sistema de estrategias fiscales:</b> definición de procesos y reglas de negocio para cálculo, control y cumplimiento de obligaciones fiscales.</li>
+                  <li><b style="color:var(--text)">Aplicaciones móviles y web:</b> levantamiento de requisitos, definición de flujos y validación de versiones con tecnologías modernas.</li>
+                </ul>
+              </div>
+              <div class="achievement" style="margin-top:14px"><i data-lucide="award"></i><div><b>Logro:</b> Entrega exitosa de 3 sistemas que redujeron tiempos operativos, eliminaron errores manuales y mejoraron el cumplimiento normativo — todo gestionado 100% a distancia.</div></div>
+            </div>
+          </div>
+
+          <!-- 3 -->
+          <div class="exp">
+            <div class="exp-card">
+              <div class="exp-head">
+                <div class="exp-role">Analista y Líder de Proyecto · Actualización Tecnológica del Sistema de Becas</div>
+                <div class="exp-date">Ene 2024 — Dic 2024</div>
+              </div>
+              <div class="exp-co"><i data-lucide="landmark"></i> CONACYT · Consejo Nacional de Ciencia y Tecnología</div>
+              <ul>
+                <li>Diagnóstico de obsolescencia tecnológica, levantamiento de requisitos y definición de hoja de ruta para la actualización del Sistema de Becas.</li>
+                <li>Conformación de equipo multidisciplinario, asignación de roles y planeación con metas, indicadores y seguimiento de desviaciones.</li>
+                <li>Acompañamiento en implementación de mejoras técnicas y funcionales, asegurando continuidad, seguridad y alineación normativa.</li>
+              </ul>
+              <div class="achievement"><i data-lucide="award"></i><div><b>Logro:</b> Actualización tecnológica completada dentro de plazos, con mejoras en rendimiento, seguridad y funcionalidad.</div></div>
+            </div>
+          </div>
+
+          <!-- 4 -->
+          <div class="exp">
+            <div class="exp-card">
+              <div class="exp-head">
+                <div class="exp-role">Consultor y Desarrollador Independiente</div>
+                <div class="exp-date">Ene 2024 — Dic 2025</div>
+              </div>
+              <div class="exp-co"><i data-lucide="rocket"></i> Proyectos simultáneos (en paralelo a Grupo Miura)</div>
+              <div class="sub-exp" style="margin-top:0;padding-top:0;border-top:none">
+                <div class="sub-title"><i data-lucide="truck"></i> Sistema de Transporte y Logística de Materiales de Construcción · Hidalgo</div>
+                <ul>
+                  <li>Diseño funcional para gestión de rutas, seguimiento de transporte, control de inventario y trazabilidad de entregas.</li>
+                  <li>Programación de viajes, asignación de unidades y control de documentación de carga.</li>
+                </ul>
+                <div class="achievement" style="margin-bottom:14px"><i data-lucide="award"></i><div><b>Logro:</b> Digitalización de la gestión logística, mayor visibilidad de materiales en tránsito y reducción de tiempos de respuesta.</div></div>
+                <div class="sub-title"><i data-lucide="school"></i> Modernización Tecnológica Educativa · Colegio Marie Curie, Actopan</div>
+                <ul>
+                  <li>Diagnóstico e implementación de plataformas de pagos, gestión académica y tecnologías en aulas.</li>
+                  <li>Coordinación con dirección escolar, docentes y proveedores, traduciendo necesidades educativas en especificaciones claras.</li>
+                </ul>
+                <div class="achievement"><i data-lucide="award"></i><div><b>Logro:</b> Modernización de infraestructura tecnológica; plataformas que agilizaron cobros, mejoraron la planeación y simplificaron la gestión.</div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 5 -->
+          <div class="exp">
+            <div class="exp-card">
+              <div class="exp-head">
+                <div class="exp-role">Analista de Sistemas · Proyecto Becas CONACYT</div>
+                <div class="exp-date">Ene 2019 — Dic 2019</div>
+              </div>
+              <div class="exp-co"><i data-lucide="file-text"></i> Levantamiento y documentación de requisitos</div>
+              <ul>
+                <li>Levantamiento, análisis y documentación de requisitos funcionales y no funcionales; diagramas de flujo y modelos de datos.</li>
+                <li>Detección de inconsistencias y propuesta de mejoras en registro, validación y asignación de becas.</li>
+              </ul>
+              <div class="achievement"><i data-lucide="award"></i><div><b>Logro:</b> Estandarización del levantamiento de requisitos y documentación funcional, reduciendo dudas y correcciones en etapas posteriores.</div></div>
+            </div>
+          </div>
+
+          <!-- 6 -->
+          <div class="exp">
+            <div class="exp-card">
+              <div class="exp-head">
+                <div class="exp-role">INFOTEC · Secretaría de la Función Pública</div>
+                <div class="exp-date">Ene 2012 — Dic 2018 · 7 años</div>
+              </div>
+              <div class="exp-co"><i data-lucide="shield-check"></i> Sistemas de control y cumplimiento normativo</div>
+              <div class="sub-exp" style="margin-top:0;padding-top:0;border-top:none">
+                <div class="sub-title"><i data-lucide="line-chart"></i> Analista de Sistemas · 2013–2018 (6 años)</div>
+                <ul>
+                  <li>Sistema de Procedimiento Administrativo de Servidores Públicos: flujos, reglas y trazabilidad de procedimientos y resoluciones.</li>
+                  <li>Sistema de Sanciones a Servidores Públicos: reglas de negocio, flujos de validación y control, asegurando legalidad y transparencia.</li>
+                  <li>Sistema de Sanciones a Proveedores: diseño funcional para registro, control y publicación de sanciones.</li>
+                </ul>
+                <div class="sub-title" style="margin-top:14px"><i data-lucide="code-2"></i> Desarrollador de Sistemas · 2012</div>
+                <ul>
+                  <li>Desarrollo, pruebas y mantenimiento de módulos; consultas, pruebas funcionales y documentación técnica; soporte y ajustes.</li>
+                </ul>
+              </div>
+              <div class="achievement"><i data-lucide="award"></i><div><b>Logro:</b> Estandarización y digitalización de procesos de control, con mayor trazabilidad y reducción de tiempos en gestión de procedimientos.</div></div>
+            </div>
+          </div>
+
+        </div><!-- /timeline -->
+      </section>
+    </div>
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside>
+
+      <div class="side-card">
+        <h3><i data-lucide="settings-2"></i> Habilidades técnicas</h3>
+        <div class="skill-group">
+          <div class="sg-name">Análisis y modelado</div>
+          <div class="skill-bar"><div class="sb-top"><span>Levantamiento de requisitos / BPMN</span><span>95%</span></div><div class="sb-track"><div class="sb-fill" style="width:95%"></div></div></div>
+          <div class="skill-bar"><div class="sb-top"><span>Diagramas de flujo / Modelos de datos</span><span>92%</span></div><div class="sb-track"><div class="sb-fill" style="width:92%"></div></div></div>
+          <div class="skill-bar"><div class="sb-top"><span>Historias de usuario / Casos de uso</span><span>90%</span></div><div class="sb-track"><div class="sb-fill" style="width:90%"></div></div></div>
+        </div>
+        <div class="skill-group">
+          <div class="sg-name">Metodologías y herramientas</div>
+          <div class="skill-bar"><div class="sb-top"><span>Agile / Scrum / SDLC</span><span>93%</span></div><div class="sb-track"><div class="sb-fill" style="width:93%"></div></div></div>
+          <div class="skill-bar"><div class="sb-top"><span>Jira / Confluence / MS Project</span><span>90%</span></div><div class="sb-track"><div class="sb-fill" style="width:90%"></div></div></div>
+          <div class="skill-bar"><div class="sb-top"><span>Planeación y seguimiento de proyectos</span><span>94%</span></div><div class="sb-track"><div class="sb-fill" style="width:94%"></div></div></div>
+        </div>
+        <div class="skill-group">
+          <div class="sg-name">Desarrollo</div>
+          <div class="skill-bar"><div class="sb-top"><span>HTML / CSS / Diseño adaptable</span><span>85%</span></div><div class="sb-track"><div class="sb-fill" style="width:85%"></div></div></div>
+          <div class="skill-bar"><div class="sb-top"><span>JavaScript / Bibliotecas frontend</span><span>80%</span></div><div class="sb-track"><div class="sb-fill" style="width:80%"></div></div></div>
+          <div class="skill-bar"><div class="sb-top"><span>SQL / Bases de datos relacionales</span><span>82%</span></div><div class="sb-track"><div class="sb-fill" style="width:82%"></div></div></div>
+          <div class="skill-bar"><div class="sb-top"><span>Python</span><span>75%</span></div><div class="sb-track"><div class="sb-fill" style="width:75%"></div></div></div>
+          <div class="skill-bar"><div class="sb-top"><span>Full Stack (en formación)</span><span>60%</span></div><div class="sb-track"><div class="sb-fill" style="width:60%"></div></div></div>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <h3><i data-lucide="target"></i> Especialidad funcional</h3>
+        <div class="pill-cloud">
+          <span class="pill">Actualización tecnológica</span>
+          <span class="pill">Sistemas de nómina</span>
+          <span class="pill">Procesos fiscales</span>
+          <span class="pill">Aplicaciones móviles</span>
+          <span class="pill">Infraestructura TI</span>
+          <span class="pill">Logística especializada</span>
+          <span class="pill">Material peligroso</span>
+          <span class="pill">Cumplimiento normativo</span>
+          <span class="pill">Seguridad operativa</span>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <h3><i data-lucide="graduation-cap"></i> Formación académica</h3>
+        <div class="edu-item">
+          <div class="e-title">Licenciatura en Administración</div>
+          <div class="e-sub">UAM Iztapalapa · Estudios concluidos</div>
+          <span class="e-status wip">Trámite de titulación</span>
+        </div>
+        <div class="edu-item">
+          <div class="e-title">Especialidad en Liderazgo y Marketing</div>
+          <span class="e-status done">Concluida</span>
+        </div>
+        <div class="edu-item">
+          <div class="e-title">Técnico en Informática · Desarrollo de Software</div>
+          <div class="e-sub">CETYS 153</div>
+          <span class="e-status done">Concluido</span>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <h3><i data-lucide="badge-check"></i> Certificaciones</h3>
+        <div class="cert-list">
+          <div class="cert-item"><i data-lucide="check-circle-2"></i> Diseño Web Adaptable</div>
+          <div class="cert-item"><i data-lucide="check-circle-2"></i> JavaScript</div>
+          <div class="cert-item"><i data-lucide="check-circle-2"></i> Bibliotecas de Desarrollo Frontend</div>
+          <div class="cert-item"><i data-lucide="check-circle-2"></i> Python</div>
+          <div class="cert-item"><i data-lucide="check-circle-2"></i> Bases de Datos Relacionales / SQL</div>
+        </div>
+        <div style="margin-top:16px;padding-top:14px;border-top:1px dashed var(--border)">
+          <div class="skill-bar"><div class="sb-top"><span>Full Stack Developer · freeCodeCamp</span><span>60%</span></div><div class="sb-track"><div class="sb-fill" style="width:60%"></div></div></div>
+          <div class="skill-bar" style="margin-bottom:0"><div class="sb-top"><span>Python · freeCodeCamp</span><span>20%</span></div><div class="sb-track"><div class="sb-fill" style="width:20%"></div></div></div>
+        </div>
+      </div>
+
+      <div class="side-card">
+        <h3><i data-lucide="cpu"></i> IA aplicada al análisis y desarrollo</h3>
+        <div class="ai-tool">
+          <div class="ai-name"><i data-lucide="sparkles"></i> Dola</div>
+          <div class="ai-desc">Explicación de código, diagnóstico y corrección de errores, generación multi-lenguaje y análisis de documentación técnica.</div>
+        </div>
+        <div class="ai-tool">
+          <div class="ai-name"><i data-lucide="sparkles"></i> Claude / Claude Code</div>
+          <div class="ai-desc">Análisis de bases de código, arquitectura, refactorización multi-archivo y revisión de calidad y seguridad.</div>
+        </div>
+        <div class="ai-tool">
+          <div class="ai-name"><i data-lucide="sparkles"></i> GitHub Copilot</div>
+          <div class="ai-desc">Autocompletado inteligente, generación de pruebas unitarias y detección temprana de vulnerabilidades.</div>
+        </div>
+        <div class="ai-tool">
+          <div class="ai-name"><i data-lucide="sparkles"></i> Gemini CLI / Vertex AI Code</div>
+          <div class="ai-desc">Generación de código desde lenguaje natural, auditoría de seguridad y documentación arquitectónica.</div>
+        </div>
+      </div>
+
+    </aside>
+  </div><!-- /main-grid -->
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    José Isaac García Rivera · Analista de Negocio TI · Pachuca, Hidalgo, México
+    <div class="code-line">// analysis → plan → build → deliver → improve</div>
+  </footer>
+
+</div><!-- /page -->
+
+<script>
+(function(){
+  // render lucide icons
+  if (window.lucide && lucide.createIcons) lucide.createIcons();
+
+  // animate skill bars on load
+  var fills = document.querySelectorAll('.sb-fill');
+  function animateBars(){
+    fills.forEach(function(f){
+      var w = f.getAttribute('data-w') || '0';
+      f.style.width = w + '%';
+    });
+  }
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){ animateBars(); io.disconnect(); }
+      });
+    }, {threshold:0.2});
+    var aside = document.querySelector('aside');
+    if (aside) io.observe(aside); else animateBars();
+  } else {
+    setTimeout(animateBars, 300);
+  }
+})();
+</script>
+</body>
+</html>
